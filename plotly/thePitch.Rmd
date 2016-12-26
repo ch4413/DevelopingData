@@ -1,0 +1,53 @@
+---
+title: "The Pitch"
+author: "Christopher Hughes"
+date: "26 December 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## The data to visualise
+
+Here's the data that we'll be viewing.
+
+```{R, echo = TRUE}
+head(mtcars)
+
+```
+
+## How it can be viewed
+
+A variable can be chosen from the drop-down menu. It will then be plotted as a histogram with the binning number of your choice.
+
+```{r}
+    x    <- mtcars[, c("mpg")]  # mtcars data
+    bins <- seq(min(x), max(x), length.out = 10 + 1)
+    
+    # draw the histogram with the specified number of bins
+    hist(x, breaks = bins, col = 'darkgray', border = 'white')
+```
+
+## It's reactive
+
+Change quickly between your data variable without having to edit your plot.
+
+There aren't many other features or advantages but wait. It's in constant development.
+
+## Where can you access this app from? 
+
+Anywhere in the world. It's on the internet! Anyway, here's a map of where my office is.
+
+
+```{r}
+suppressMessages(library(leaflet))
+suppressMessages(library(dplyr))
+
+my_map <- leaflet() %>%
+  addTiles() %>%
+  addMarkers(lat=51.5200, lng=-0.0892, popup = "My Office")
+my_map
+
+```
