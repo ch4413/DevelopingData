@@ -1,0 +1,26 @@
+---
+title: "Plotly Presentation"
+author: "Christopher Hughes"
+date: "26 December 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo = FALSE}
+suppressMessages(library(ggplot2))
+suppressMessages(library(plotly))
+
+```
+
+## R Markdown
+
+```{r echo = FALSE}
+data("diamonds")
+dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
+a <- qplot(carat, price, data=dsamp, colour=clarity)
+
+ggplotly(a)
+```
